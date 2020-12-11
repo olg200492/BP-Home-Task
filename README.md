@@ -1,4 +1,4 @@
-# 🐼 P-Home-Task
+# 🐼 BP-Home-Task
 
 Run `npm install`
 
