@@ -1,5 +1,7 @@
 # 🐼 BP-Home-Task
 
+## Build:
+
 Run `npm install`
 
 ## Run:
