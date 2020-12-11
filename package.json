@@ -1,0 +1,23 @@
+{
+  "name": "bp-home-task",
+  "version": "1.0.0",
+  "description": "BP Home Task",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olg200492/BP-Home-Task.git"
+  },
+  "author": "Olga Lapovsky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/olg200492/BP-Home-Task/issues"
+  },
+  "homepage": "https://github.com/olg200492/BP-Home-Task#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

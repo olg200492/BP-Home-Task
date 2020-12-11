@@ -1,8 +1,8 @@
 const { spawn } = require("child_process");
 const subProcess = spawn("./dataStream.exe");
 
-const event_typeFromStream = new Map();
-const dataFromStream = new Map();
+let eventCount = new Map();
+let wordCount = new Map();
 
 function startStream() {
   subProcess.stdout.on("data", (data) => {
@@ -29,22 +29,25 @@ function checkIfJson(data) {
 
 function processStream(data) {
   let cleanData = data.toString().split("\n");
- cleanData.map((item) => {
-   let jsonItem = checkIfJson(item);
+  cleanData.map((item) => {
+    let jsonItem = checkIfJson(item);
     if (jsonItem) {
-      const { event_type, data, timestamp } = jsonItem;
-      console.log(dataFromStream);
-      let numOfEventType = event_typeFromStream.get(event_type);
-      let numOfData = dataFromStream.get(data);
+      const { event_type, data } = jsonItem;
+
+      let numOfEventType = eventCount.get(event_type);
+      let numOfData = wordCount.get(data);
+
       numOfEventType
-        ? event_typeFromStream.set(event_type, ++numOfEventType)
-        : event_typeFromStream.set(event_type, 1);
-      numOfData
-        ? dataFromStream.set(data, ++numOfData)
-        : dataFromStream.set(data, 1);
+        ? eventCount.set(event_type, ++numOfEventType)
+        : eventCount.set(event_type, 1);
+      numOfData ? wordCount.set(data, ++numOfData) : wordCount.set(data, 1);
     }
-   
   });
 }
 
-startStream();
+module.exports = {
+  startStream,
+  stopStream,
+  eventCount,
+  wordCount,
+};
